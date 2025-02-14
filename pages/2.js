@@ -1,23 +1,60 @@
 import React, {useState} from "react"; 
 
 const useStateTask=() =>{
-    const [color, setColor]=useState("");
-    return(
-        <div className={`flex space-x-4 w-full h-screen bg-${color}-800`}>
-            <p> ungu solih</p>
-            <div>
-            <button className="border bg-red-800 py-4 px-6" onClick={()=>{setColor("red");}}>ul</button>
-            {color=="red" && <div className="bg-red-800"></div>  }
-            </div>
-            <div>
-            <button className="border bg-blue-800 py-4 px-6" onClick={()=>{setColor("blue");}}>ol</button>
-            {color=="blue" && <div className="bg-blue-800"></div>  }
-            </div>
-            <div>
-            <button className="border bg-green-800 py-4 px-6" onClick={()=>{setColor("red");}}>al</button>
-            {color=="green" && <div className="bg-green-800"></div>  }
-            </div>
+    const [color, setColor]=useState("white");
+    return (
+        <div className={` h-screen w-screen bg-${color}-800`}>
+          {color == "red" ? (
+            <> 
+            <button
+              className="border bg-red-800 h-1/2 w-[200px]"
+              onClick={() => setColor("red")}
+            >
+              Red
+            </button>
+            <button className="border bg-slate-500 h-1/2 w-[200px]" onClick={() => setColor("white")}>
+            Clear
+            </button>
+             </>
+          ) : color == "green" ? (
+            <><button
+              className="border bg-green-800 w-[200px] h-1/2"
+              onClick={() => setColor("green")}
+            >
+              Green
+            </button>
+            <button className="border bg-slate-500 w-[200px] h-1/2" onClick={() => setColor("white")}>
+            Clear
+            </button></>
+          ):color == "blue" ? (
+            <><button
+              className="border bg-blue-800 w-[200px] h-1/2"
+              onClick={() => setColor("blue")}
+            >
+              Blue
+            </button>
+            <button className="border bg-slate-500  w-[200px] h-1/2" onClick={() => setColor("white")}>
+            clear
+            </button></>
+          ):(
+            <><button
+                className="border bg-red-800 w-[200px] h-1/2"
+                onClick={() => setColor("red")}
+              >
+                Red
+              </button><button
+                className="border bg-green-800 w-[200px] h-1/2"
+                onClick={() => setColor("green")}
+              >
+                 Green
+                </button><button
+                  className="border bg-blue-800 w-[200px] h-1/2"
+                  onClick={() => setColor("blue")}
+                >
+                  Blue
+                </button></>
+          )}
         </div>
-    );
-};
-export default useStateTask;    
+      );
+    };
+export default useStateTask;

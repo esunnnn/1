@@ -6,13 +6,13 @@ export default function Home() {
   return (
     <div>
       <button
-        className="border border-black m-3"
+        className="border border-white m-3"
         onClick={() => setCount("ysui")}
       >
         Enen Deer Dar
       </button>
       <button
-        className="border border-black m-3"
+        className="border border-white m-3"
         onClick={() => setCount("")}
       >
         Enen Deer Bas Dar
