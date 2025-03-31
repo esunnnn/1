@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-
+import { useRouter } from "next/router";
+import Image from "next/image";
 const exampleData = [
   {
     id: 1,
@@ -199,75 +200,90 @@ const exampleData = [
   },
 ];
 
-export default function Home() {
+export default function lab1() {
   const [count, setCount] = useState("");
   const [name, setName] = useState("");
+   const router = useRouter();
   console.log("lenghtj --->", exampleData.length);
   const filter = exampleData.filter((item) =>
     item.firstname.toLowerCase().includes(name.toLowerCase())
   );
   console.log(filter);
   return (
-    <div className="min-h-screen bg-zinc-900 p-2 flex flex-col items-center">
-      <div className="flex items-center gap-3 mb-6 ">
+    <div className="min-h-screen  bg-zinc-900 p-2 flex flex-col items-center">
+       <button
+                          className="  border border-black bg-white m-3 p-2 text-black " 
+                          onClick={() => { router.push("main"); }}
+                          aria-label="Go push"
+                        >
+                         Back
+                          
+                        </button>
+      <div className="flex items-center gap-3 mb-6 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         <input
           type="text"
           placeholder="Search an user"
           className="w-500 p-3 px-8 py-4 border rounded-lg  border-gray-600"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        /><button
-        className="bg-red-600 text-white px-5 py-4  "
-        onClick={() => setCount(!count)}
-      >
-        change
-      </button>
-      <p className="ml-3">{count}</p>
-    </div>
-        {filter.length<0 ? <p>No username found</p> : <> <div
-        className={`${
-          count == true ? "grid" : "flex flex-col"
-        } grid-cols-4 gap-4`}> {filter.map((element) => (
-          <div className="w-full  m-2 p-3 rounded-xl ">
-            <div
-              className={`${
-                count == false ? "grid items-center " : "flex flex-col"
-              } grid-cols-4 gap-4`}
-            >
-             <div className="bg-zinc-700 p-5 rounded-lg ">
-             <img
-                className={`${
-                  count == true ? "w-30 h-30 ml-4" : "flex flex-col"
-                } rounded-xl  w-60 h-60`}
-                src={element.image}></img>
-
-<div className="mt-6 text-center">
-                  <p className="text-l font-semibold text-white">Username: {element.firstname} 
-                  </p>
-                  <p className="text-l font-sm text-red-700">Lastname: {element.lastname} 
-                  </p>
-                  <p className="text-gray-500 text-sm">Job: {element.job}</p>
-                  <p className="text-gray-500 text-sm">Height: {element.height} cm</p>
-                  <div className="mt-2">
-                    <p className="font-semibold text-rose-500">Items:</p>
-                    <ul className="text-red-600 mt-2 text-sm">
-                      {element.items.map((item) => (
-                        <li key={item.id} className="bg-red-300 px-2 py-1 rounded-md inline-block m-1">
-                          {item.name}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-             </div>
-            </div>
-          </div>
-        ))}</div> </>}
-        
-     
-       
-        
+        />
+        <button
+          className="bg-red-600 text-white px-5 py-4  "
+          onClick={() => setCount(!count)}
+        >
+          change
+        </button>
+        <p className="ml-3">{!count}</p>
       </div>
-   
+      {filter.length < 0 ? (
+        <p>No username found</p>
+      ) : (
+        <div
+          className={`${
+            count == false ? "grid " : "flex flex-col w-full"
+          } xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4`}
+        >
+          {filter.map((element) => (
+            <div className={`w-full  m-2 p-3 rounded-xl bg-zinc-600 ${count == false ? "flex flex-col  items-center justify-center" : "flex"}`}>
+              <img
+                className={`${
+                  count == true ? "w-30 h-30  " : "flex flex-col "
+                }  rounded-xl  w-60 h-60`}
+                src={element.image}
+              ></img>
+
+              <div className="p-4  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                <p className=" font-semibold text-white">
+                  Username: {element.firstname}
+                </p>
+                <p className=" font-sm text-red-700">
+                  Lastname: {element.lastname}
+                </p>
+                <p className="text-gray-500 text-sm">Job: {element.job}</p>
+                <p className="text-gray-500 text-sm">
+                  Height: {element.height} cm
+                </p>
+                <div className="mt-2">
+                  <p className="font-semibold text-rose-500">Items:</p>
+                  <ul className="text-red-600 mt-2 text-sm">
+                    {element.items.map((item) => (
+                      <li
+                        key={item.id}
+                        className="bg-red-300 px-2 py-1 rounded-md inline-block m-1"
+                      >
+                        {item.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+              </div>
+              
+            </div>
+            
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

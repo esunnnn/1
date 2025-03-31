@@ -1,9 +1,20 @@
-import React, {useState} from "react"; 
-
+import React, {useState} from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 const useStateTask=() =>{
     const [color, setColor]=useState("white");
+    const router = useRouter();
     return (
-        <div className={` h-screen w-screen bg-${color}-800`}>
+      
+        <div className={` h-screen  w-screen bg-${color}-800`}>
+          <button
+                          className="  border border-black bg-white m-3 p-2 text-black " 
+                          onClick={() => { router.push("main"); }}
+                          aria-label="Go push"
+                        >
+                         Back
+                          
+                        </button>
           {color == "red" ? (
             <> 
             <button
@@ -54,6 +65,7 @@ const useStateTask=() =>{
                   Blue
                 </button></>
           )}
+           
         </div>
       );
     };
