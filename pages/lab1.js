@@ -213,7 +213,7 @@ export default function lab1() {
     <div className="min-h-screen  bg-zinc-900 p-2 flex flex-col items-center">
        <button
                           className="  border border-black bg-white m-3 p-2 text-black " 
-                          onClick={() => { router.push("main"); }}
+                          onClick={() => { router.push("/"); }}
                           aria-label="Go push"
                         >
                          Back

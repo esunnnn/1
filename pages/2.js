@@ -9,7 +9,7 @@ const useStateTask=() =>{
         <div className={` h-screen  w-screen bg-${color}-800`}>
           <button
                           className="  border border-black bg-white m-3 p-2 text-black " 
-                          onClick={() => { router.push("main"); }}
+                          onClick={() => { router.push("/"); }}
                           aria-label="Go push"
                         >
                          Back

@@ -8,7 +8,7 @@ export default function useStateHook() {
     <div className="h-screen w-full flex justify-center items-center bg-white ">
        <button
                           className="  border border-black m-3 p-2 text-black " 
-                          onClick={() => {router.push("main"); }}
+                          onClick={() => {router.push("/"); }}
                           aria-label="Go push"
                         >
                          Back
